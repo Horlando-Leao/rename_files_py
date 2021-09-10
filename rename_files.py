@@ -17,7 +17,7 @@ PATH_FILES = str(sys.argv[1]) #path directory
 EXTESION_FILES = str(sys.argv[2]).lower()# set extension pdf or doc or others, without dot "."
 
 
-def get_list_name_files_pdf(APP_FOLDER:str,) -> list:
+def get_list_name_files(APP_FOLDER:str,) -> list:
 
     NameFiles = []
     for base, dirs, files in os.walk(APP_FOLDER):
@@ -27,7 +27,7 @@ def get_list_name_files_pdf(APP_FOLDER:str,) -> list:
                 NameFiles.append(Files)
     return NameFiles
 
-def get_number_of_files_pdf(APP_FOLDER:str) -> int:
+def get_number_of_files(APP_FOLDER:str) -> int:
 
     totalFiles = 0
     for base, dirs, files in os.walk(APP_FOLDER):
@@ -38,8 +38,8 @@ def get_number_of_files_pdf(APP_FOLDER:str) -> int:
     print('Total number of files',totalFiles)
     return int(totalFiles)
 
-if __name__ == '__main__' and get_number_of_files_pdf(PATH_FILES) > 0:
-    list_files = get_list_name_files_pdf(PATH_FILES)
+if __name__ == '__main__' and get_number_of_files(PATH_FILES) > 0:
+    list_files = get_list_name_files(PATH_FILES)
     for file in list_files:
         old_name_file = f'{PATH_FILES}/{file}'
         new_name_file = f'{PATH_FILES}/{str(uuid.uuid4())}.{EXTESION_FILES}'
